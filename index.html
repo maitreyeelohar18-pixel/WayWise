@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WayWise | Smart Mumbai Mobility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <main class="app-shell" data-theme="multimodal">
+      <section class="screen landing-screen active" id="landing-screen">
+        <div class="cinema-grid"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">Smart Multi-Modal Travel Planning</p>
+          <h1>WayWise</h1>
+          <p class="hero-subtitle">
+            Plan faster, cheaper, disruption-aware journeys across Mumbai with immersive travel intelligence.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="start-button">Start</button>
+            <button class="ghost-btn" id="voice-toggle">Replay Voice</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen login-screen" id="login-screen">
+        <div class="glass-card login-card">
+          <p class="eyebrow">Enter the Command Deck</p>
+          <h2>Welcome back to WayWise</h2>
+          <form id="login-form">
+            <label>
+              <span>Name</span>
+              <input type="text" id="traveler-name" placeholder="Your name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" id="traveler-email" placeholder="name@example.com" required />
+            </label>
+            <label>
+              <span>Password</span>
+              <input type="password" id="traveler-password" placeholder="Password" required />
+            </label>
+            <button class="primary-btn" type="submit">Enter WayWise</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="screen dashboard-screen" id="dashboard-screen">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Adaptive Mumbai Mobility</p>
+            <h2 id="welcome-name">Hello, Traveler</h2>
+          </div>
+          <div class="ambient-controls">
+            <button class="ghost-btn small-btn" id="reset-session-button">Reset Login</button>
+            <button class="ghost-btn small-btn" id="ambient-button">Ambient Sound</button>
+            <button class="ghost-btn small-btn" id="narrate-button">Narrate</button>
+          </div>
+        </header>
+
+        <section class="mode-grid">
+          <article class="mode-card rail" data-mode="rail">
+            <div class="mode-visual">
+              <div class="vehicle vehicle-train featured"></div>
+            </div>
+            <h3>Train</h3>
+            <p>Metro, local and express intelligence with crowd-aware re-routing.</p>
+          </article>
+          <article class="mode-card bus" data-mode="bus">
+            <div class="mode-visual">
+              <div class="vehicle vehicle-bus featured"></div>
+            </div>
+            <h3>Bus</h3>
+            <p>City and intercity options tuned for live congestion and fare sorting.</p>
+          </article>
+          <article class="mode-card walking" data-mode="walking">
+            <div class="mode-visual">
+              <div class="vehicle vehicle-walker featured"></div>
+            </div>
+            <h3>Walking</h3>
+            <p>Short hops, last-mile connections and comfort-focused pedestrian guidance.</p>
+          </article>
+        </section>
+
+        <section class="planner-panel">
+          <div class="planner-copy">
+            <p class="eyebrow" id="planner-kicker">Choose a mobility stream</p>
+            <h3 id="planner-title">Design your next move</h3>
+            <p id="planner-description">
+              Tap a transport mode above to open a themed Mumbai planner with live Google routing, sorting, and route comparison.
+            </p>
+            <div class="overall-reco" id="overall-reco">
+              Overall recommendation for Mumbai will appear here after your search.
+            </div>
+          </div>
+
+          <form id="route-form" class="planner-form">
+            <div class="field-row">
+              <label>
+                <span>Source</span>
+                <input type="text" id="source" placeholder="Any Mumbai location, for example Dadar Station" required />
+              </label>
+              <label>
+                <span>Destination</span>
+                <input type="text" id="destination" placeholder="Any Mumbai location, for example Thane Station" required />
+              </label>
+            </div>
+            <div class="field-row">
+              <label>
+                <span>Service</span>
+                <select id="service">
+                  <option value="all">All Services</option>
+                </select>
+              </label>
+              <label>
+                <span>Preference</span>
+                <select id="preference">
+                  <option value="balanced">Balanced</option>
+                  <option value="fastest">Fastest</option>
+                  <option value="cheapest">Cheapest</option>
+                  <option value="fewest_transfers">Fewest Transfers</option>
+                </select>
+              </label>
+              <label>
+                <span>Sort By</span>
+                <select id="sort-by">
+                  <option value="balanced">Best Overall</option>
+                  <option value="fastest">Fastest</option>
+                  <option value="cheapest">Cheapest</option>
+                  <option value="fewest_transfers">Fewest Transfers</option>
+                </select>
+              </label>
+            </div>
+            <button class="primary-btn" type="submit">Find Best Route</button>
+          </form>
+        </section>
+
+        <section class="insight-grid">
+          <div class="glass-card map-card">
+            <div class="card-head">
+              <h3>Mumbai Live Route Map</h3>
+              <span class="live-pill" id="map-pill">Google Maps</span>
+            </div>
+            <div id="map-status" class="map-status">
+              Connect a Google Maps API key to unlock live route drawing and Mumbai place autocomplete.
+            </div>
+            <div id="live-map" class="live-map" role="img" aria-label="Mumbai live route map"></div>
+          </div>
+
+          <div class="glass-card result-card">
+            <div class="card-head">
+              <h3>Route Intelligence</h3>
+              <span id="status-pill" class="status-pill stable">Ready</span>
+            </div>
+            <div id="result-empty" class="empty-state">
+              Enter a trip to get adaptive route suggestions with cost, time and disruption handling.
+            </div>
+            <div id="result-list" class="result-list"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
